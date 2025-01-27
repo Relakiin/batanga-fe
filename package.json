@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "homepage": "https://relakiin.github.io/",
+  "homepage": "https://relakiin.github.io/batanga-fe",
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
     "motion": "^12.0.6",
