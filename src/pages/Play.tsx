@@ -11,9 +11,9 @@ function Play() {
   const modifierWheelOptions = mapWheelOptions(modifiers);
   const restrictionWheelOptions = mapWheelOptions(restrictions);
 
-  const [selectedModifier, setSelectedModifier] =
+  const [, setSelectedModifier] =
     useState<BatangaWheelData | null>(null);
-  const [selectedRestriction, setSelectedRestriction] =
+  const [, setSelectedRestriction] =
     useState<BatangaWheelData | null>(null);
 
   const handleModifierSelected = (prizeNumber: number) => {
