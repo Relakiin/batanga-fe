@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useScreenDetector } from '../hooks/useScreenDetector';
 import { Roulette, RouletteItem, useRoulette } from 'react-hook-roulette';
+import { deepmerge } from 'deepmerge-ts';
 
 interface BatangaWheelProps {
   items: RouletteItem[];
@@ -9,15 +10,19 @@ interface BatangaWheelProps {
 
 const desktopSize = {
   size: 450,
-  label: {
-    font: '14px Arial',
+  style: {
+    label: {
+      font: '14px Verdana',
+    },
   },
 };
 
 const mobileSize = {
   size: 250,
-  label: {
-    font: '3px Impact',
+  style: {
+    label: {
+      font: '8px Verdana',
+    },
   },
 };
 
@@ -29,17 +34,17 @@ const defaultOptions = {
   determineAngle: 45,
   showArrow: true,
   style: {
+    label: {
+      offset: 0.9,
+      defaultColor: '#000',
+      baseline: 'middle' as CanvasTextBaseline,
+    },
     canvas: {
       bg: '#171618',
     },
     arrow: {
       bg: '#000',
       size: 16,
-    },
-    label: {
-      offset: 0.9,
-      defaultColor: '#000',
-      baseline: 'middle' as CanvasTextBaseline,
     },
     pie: {
       border: false,
@@ -67,8 +72,12 @@ const defaultOptions = {
 
 const BatangaWheel = ({ items, onResult }: BatangaWheelProps) => {
   const [spinning, setSpinning] = useState(false);
-  const {isMobile} = useScreenDetector();
-  const options = isMobile ? {...defaultOptions, ...mobileSize} : {...defaultOptions, ...desktopSize}
+  const { isMobile } = useScreenDetector();
+  const options = isMobile
+    ? deepmerge(defaultOptions, mobileSize)
+    : deepmerge(defaultOptions, desktopSize);
+
+  console.log(options);
   const { roulette, onStart, onStop } = useRoulette({
     items,
     onSpinEnd: onResult,
