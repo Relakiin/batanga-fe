@@ -1,27 +1,30 @@
 import { useState } from 'react';
-import BatangaWheel from '../components/BatangaWheel.tsx';
 import { modifiers, restrictions } from '../utils/batangaWheelData.ts';
 import { BatangaWheelData } from '../models/BatangaWheelData.ts';
 import { mapWheelOptions } from '../utils/batangaWheelDataMapper.ts';
 import barBackground from '../img/bg-bar.jpeg';
-import '../styles/noScroll.css';
 import BatangaTable from '../components/BatangaTable.tsx';
+import BatangaWheel from '../components/BatangaWheel.tsx';
 
 function Play() {
   const modifierWheelOptions = mapWheelOptions(modifiers);
   const restrictionWheelOptions = mapWheelOptions(restrictions);
 
-  const [, setSelectedModifier] =
+  const [selectedModifier, setSelectedModifier] =
     useState<BatangaWheelData | null>(null);
-  const [, setSelectedRestriction] =
+  const [selectedRestriction, setSelectedRestriction] =
     useState<BatangaWheelData | null>(null);
 
-  const handleModifierSelected = (prizeNumber: number) => {
-    const winner: BatangaWheelData = modifiers[prizeNumber];
+  const handleModifierSelected = (result: string) => {
+    const winner: BatangaWheelData = modifiers.find(
+      (modifier) => modifier.name === result
+    )!;
     setSelectedModifier(winner);
   };
-  const handleRestrictionSelected = (prizeNumber: number) => {
-    const winner: BatangaWheelData = restrictions[prizeNumber];
+  const handleRestrictionSelected = (result: string) => {
+    const winner: BatangaWheelData = restrictions.find(
+      (restriction) => restriction.name === result
+    )!;
     setSelectedRestriction(winner);
   };
 
@@ -32,23 +35,30 @@ function Play() {
         backgroundImage: `url(${barBackground})`,
       }}
     >
-      <div className="grid grid-cols-4 gap-4 items-start">
-        <div className="card w-auto bg-base-200 shadow-md p-4">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 items-start">
+      {/* Restrizioni */}
+        <div className="card col-span-2 bg-base-200 shadow-md p-4">
           <h2 className="text-xl font-bold mb-4 text-center">Restrizioni</h2>
-          <BatangaWheel
-            wheelData={restrictionWheelOptions}
-            onPrizeSelected={handleRestrictionSelected}
-          />
+          {
+            <BatangaWheel
+              items={restrictionWheelOptions}
+              onResult={handleRestrictionSelected}
+            />
+          }
+          {selectedRestriction && <h2>{selectedRestriction.name}</h2>}
         </div>
 
-        <div className="card w-auto bg-base-200 shadow-md p-4">
+        {/* Modificatori */}
+        <div className="card col-span-2 bg-base-200 shadow-md p-4">
           <h2 className="text-xl font-bold mb-4 text-center">Modificatori</h2>
           <BatangaWheel
-            wheelData={modifierWheelOptions}
-            onPrizeSelected={handleModifierSelected}
+            items={modifierWheelOptions}
+            onResult={handleModifierSelected}
           />
+          {selectedModifier && <h2>{selectedModifier.name}</h2>}
         </div>
 
+        {/* Tabella con info */}
         <div className="col-span-2 w-full h-full">
           <BatangaTable />
         </div>

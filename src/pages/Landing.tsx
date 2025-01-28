@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import barBackground from '../img/bg-bar.jpeg'
-import '../styles/noScroll.css'
 import { LuSwords } from "react-icons/lu";
 import { BiSolidDrink } from "react-icons/bi";
 import Batanga from '../components/Batanga';
@@ -13,7 +12,7 @@ function Landing() {
         backgroundImage: `url(${barBackground})`,
       }}
     >
-      <div className="hero-overlay"></div>
+      <div className="hero-overlay max-h-screen"></div>
       <div className="hero-content text-neutral-content text-center">
       <Batanga />
         <div className="max-w-md">

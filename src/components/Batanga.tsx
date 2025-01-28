@@ -20,7 +20,7 @@ const Batanga = () => {
         cursor: 'pointer',
       }}
     >
-      <img src={batanga} className="max-w-sm" />
+      <img src={batanga} className="" />
     </motion.div>
   );
 };

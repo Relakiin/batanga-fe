@@ -1,10 +1,10 @@
-import { WheelData } from 'react-custom-roulette/dist/components/Wheel/types';
 import { BatangaWheelData } from '../models/BatangaWheelData';
+import { RouletteItem } from 'react-hook-roulette';
 
-export const mapWheelOptions = (data: BatangaWheelData[]): WheelData[] => {
+export const mapWheelOptions = (data: BatangaWheelData[]): RouletteItem[] => {
   return data.map((entry) => {
     return {
-      option: entry.name,
+      name: entry.name,
     };
   });
 };
