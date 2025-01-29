@@ -10,15 +10,15 @@ import Feedback from './pages/Feedback';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Landing />} />
-          <Route path="/play" element={<Play />} />
-          <Route path="/rules" element={<Rules />} />
-          <Route path="/feedback" element={<Feedback />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<Landing />} />
+            <Route path="/play" element={<Play />} />
+            <Route path="/rules" element={<Rules />} />
+            <Route path="/feedback" element={<Feedback />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
   </StrictMode>
 );
