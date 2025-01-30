@@ -1,48 +1,29 @@
-const BatangaTable = () => {
-  return (
-    <table className="table bg-base-300">
-      {/* head */}
-      <thead className="sticky top-0">
-        <tr>
-          <th>Name</th>
-          <th>Job</th>
-          <th>Favorite Color</th>
-        </tr>
-      </thead>
+import { BatangaTableData } from "../models/BatangaWheelData";
+import { mapDataToTableEntries } from "../utils/batangaWheelDataMapper";
 
-      <tbody>
-        {/* row 1 */}
-        <tr>
-          <td>
-            <div className="flex items-center gap-3">
-              <div className="avatar">
-                <div className="mask mask-squircle h-12 w-12">
-                  <img
-                    src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                    alt="Avatar Tailwind CSS Component"
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="font-bold">Hart Hagerty</div>
-                <div className="text-sm opacity-50">United States</div>
-              </div>
-            </div>
-          </td>
-          <td>
-            Zemlak, Daniel and Leannon
-            <br />
-            <span className="badge badge-ghost badge-sm">
-              Desktop Support Technician
-            </span>
-          </td>
-          <td>Purple</td>
-          <th>
-            <button className="btn btn-ghost btn-xs">details</button>
-          </th>
-        </tr>
-      </tbody>
-    </table>
+interface BatangaTableProps {
+  data: BatangaTableData[] | null
+}
+
+const BatangaTable = ({data}: BatangaTableProps) => {
+  return (
+    <div className="overflow-y-auto h-[27rem]">
+      <table className="table table-pin-cols table-pin-rows table-xs lg:table-md bg-base-300">
+        {/* head */}
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Tipo</th>
+            <th>Nome</th>
+            <th>Descrizione</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data && data?.length > 0 ? mapDataToTableEntries(data) : (<tr><td></td><td></td><td></td><td></td></tr>)}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

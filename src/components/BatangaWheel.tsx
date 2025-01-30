@@ -9,10 +9,10 @@ interface BatangaWheelProps {
 }
 
 const desktopSize = {
-  size: 450,
+  size: 300,
   style: {
     label: {
-      font: '14px Verdana',
+      font: '12px Verdana',
     },
   },
 };
