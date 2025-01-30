@@ -5,7 +5,6 @@ import {
   BatangaWheelData,
 } from '../models/BatangaWheelData.ts';
 import { mapWheelOptions } from '../utils/batangaWheelDataMapper.tsx';
-import barBackground from '../img/bg-bar.jpeg';
 import BatangaTable from '../components/BatangaTable.tsx';
 import BatangaWheel from '../components/BatangaWheel.tsx';
 
