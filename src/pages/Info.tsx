@@ -1,4 +1,6 @@
 import { roadmap, RoadmapInfo } from '../data/roadmapInfo';
+import { FaTelegram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 function Info() {
   const buildRoadMap = (steps: RoadmapInfo[], level = 0) => {
@@ -35,6 +37,8 @@ function Info() {
   return (
     <div className="flex flex-col items-center p-4 bg-base-200 min-h-screen">
       <div className="flex flex-col gap-4 lg:w-1/2">
+        {/* Feedback Card */}
+
         <div className="card bg-base-300 shadow-md p-4 gap-4">
           <h2 className="text-3xl font-bold text-base-content">
             Dai il tuo feedback
@@ -51,40 +55,69 @@ function Info() {
             <button className="btn">Vai al form</button>
           </a>
         </div>
+
+        {/* Roadmap Card */}
+
         <div className="card bg-base-300 shadow-md p-4 gap-4">
           <h2 className="text-3xl font-bold text-base-content">Roadmap</h2>
           <hr></hr>
           <div className="text-primary">{buildRoadMap(roadmap)}</div>
         </div>
+
+        {/* Credits Card */}
+
         <div className="card bg-base-300 shadow-md p-4 gap-4">
           <h2 className="text-3xl font-bold text-base-content">Credits</h2>
           <hr></hr>
           <div className="text-primary font-bold">
-            Developed by{' '}
-            <a
-              href="https://x.com/Relakiin"
-              className="hover:underline text-error"
-            >
-              Relakiin
-            </a>{' '}
-            @ NewSleep Enterprise
+            Developed by Relakiin @ NewSleep Enterprise
           </div>
-          <div className="text-primary font-bold">
-            Built with{' '}
-            <a href="https://react.dev/" className="hover:underline text-error">
-              React
-            </a>{' '}
-            +{' '}
-            <a href="https://vite.dev/" className="hover:underline text-error">
-              Vite
-            </a>{' '}
-            +{' '}
-            <a
-              href="https://www.typescriptlang.org/"
-              className="hover:underline text-error"
-            >
-              Typescript
-            </a>{' '}
+          <div className="grid grid-cols-3 lg:flex lg:flex-row gap-2 text-primary font-bold">
+            <a href="https://react.dev/" target='_blank'>
+              <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"></img>
+            </a>
+            <a href="https://reactrouter.com/" target='_blank'>
+              <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white"></img>
+            </a>
+            <a href="https://vite.dev/" target='_blank'>
+              <img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E"></img>
+            </a>
+            <a href="https://www.typescriptlang.org/" target='_blank'>
+              <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"></img>
+            </a>
+            <a href="https://tailwindcss.com/" target='_blank'>
+              <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"></img>
+            </a>
+            <a href="https://daisyui.com" target='_blank'>
+              <img src="https://img.shields.io/badge/daisyUI-1ad1a5?style=for-the-badge&logo=daisyui&logoColor=white"></img>
+            </a>
+          </div>
+        </div>
+
+        {/* Socials Card */}
+
+        <div className="card bg-base-300 shadow-md p-4 gap-4">
+          <h2 className="text-3xl font-bold text-base-content">Socials</h2>
+          <hr></hr>
+          <div className="text-primary">
+            <a href="https://t.me/RuotaDelBatanga" target="_blank">
+              <button className="btn btn-ghost text-s">
+                <FaTelegram size={19} />
+                @RuotaDelBatanga
+              </button>
+            </a>
+            <a href="https://t.me/Relakiin" target="_blank">
+              <button className="btn btn-ghost text-s">
+                <FaTelegram size={19} />
+                @Relakiin
+              </button>
+            </a>
+            <a href="https://x.com/Relakiin" target="_blank">
+              <button className="btn btn-ghost text-s">
+                <FaXTwitter size={19} />
+                @Relakiin
+              </button>
+            </a>
           </div>
         </div>
       </div>
