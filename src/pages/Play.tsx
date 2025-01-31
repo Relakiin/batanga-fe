@@ -70,6 +70,14 @@ function Play() {
           <BatangaTable data={tableContent} />
         </div>
       </div>
+
+      {!isMobile && (
+        <div className="flex justify-center mt-10">
+          <div className="text-primary glass text-center p-10 w-1/4">
+            Settings (coming soon)
+          </div>
+        </div>
+      )}
     </div>
   );
 }

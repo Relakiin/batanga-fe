@@ -85,8 +85,11 @@ const BatangaWheel = ({ items, onResult }: BatangaWheelProps) => {
 
   const handleSpin = async () => {
     if (spinning) {
+      const offset = Math.round(Math.random() * 500);
       setSpinning(false);
-      onStop();
+      setTimeout(() => {
+        onStop();
+      }, offset);
     } else {
       setSpinning(true);
       onStart();

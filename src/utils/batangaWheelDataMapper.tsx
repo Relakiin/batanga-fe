@@ -23,7 +23,7 @@ export const mapDataToTableEntries = (data: BatangaTableData[]) => {
   return data
     .map((entry) => {
       return (
-        <tr key={entry.data.id}>
+        <tr>
           <td>{entry.player || '-'}</td>
           <td>{entry.type}</td>
           <td>{entry.data.name}</td>
@@ -62,7 +62,7 @@ export const mapDataToCollapse = (data: BatangaTableData[]) => {
   return data
     .map((entry) => {
       return (
-        <div key={entry.data.id}>
+        <div>
           <details className="collapse collapse-arrow bg-base-300">
             <summary className="collapse-title text-s font-medium">
               {entry.player && 'Player ' + entry.player + '| '} {entry.type} |{' '}

@@ -19,7 +19,7 @@ const Menu = ({ items }: MenuProps) => {
 
   const buildItems = (items: MenuItem[]) => {
     return items.map((item) => (
-      <li key={item.id}>
+      <li>
         {item.subItems ? (
           <details>
             <summary>{item.name}</summary>

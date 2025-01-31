@@ -49,17 +49,17 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/feedback" className="hover:underline">
+            <Link to="/info" className="hover:underline">
               {isMobile ? (
                 <button
                   className={clsx('btn', {
-                    'btn-secondary': location.pathname === Paths.FEEDBACK,
+                    'btn-secondary': location.pathname === Paths.INFO,
                   })}
                 >
                   <MdFeedback size={20} />
                 </button>
               ) : (
-                'Feedback'
+                'Info'
               )}
             </Link>
           </li>

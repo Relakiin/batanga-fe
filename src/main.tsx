@@ -6,7 +6,7 @@ import Layout from './components/Layout';
 import Landing from './pages/Landing';
 import Play from './pages/Play';
 import Rules from './pages/Rules';
-import Feedback from './pages/Feedback';
+import Info from './pages/Info';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
             <Route index element={<Landing />} />
             <Route path="/play" element={<Play />} />
             <Route path="/rules" element={<Rules />} />
-            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/info" element={<Info />} />
           </Route>
         </Routes>
       </BrowserRouter>
