@@ -18,10 +18,10 @@ const desktopSize = {
 };
 
 const mobileSize = {
-  size: 250,
+  size: 225,
   style: {
     label: {
-      font: '8px Verdana',
+      font: '7px Verdana',
     },
   },
 };

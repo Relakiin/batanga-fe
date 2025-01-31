@@ -15,9 +15,11 @@ const DrawerButton: React.FC<DrawerButtonProps> = ({ isMobile }) => {
   }
 
   return (
+    <li>
     <label htmlFor="my-drawer" className="btn drawer-button">
       {location.pathname === Paths.RULES ? <RxHamburgerMenu size={20}/> : <FaHistory size={20}/>}
     </label>
+    </li>
   );
 };
 
