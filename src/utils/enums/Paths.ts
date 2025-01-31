@@ -2,5 +2,5 @@ export enum Paths {
   INDEX = '/',
   PLAY = '/play',
   RULES = '/rules',
-  INFO = '/INFO',
+  INFO = '/info',
 }
