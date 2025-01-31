@@ -34,7 +34,7 @@ function Info() {
 
   return (
     <div className="flex flex-col items-center p-4 bg-base-200 min-h-screen">
-      <div className="flex flex-col gap-4 w-1/2">
+      <div className="flex flex-col gap-4 lg:w-1/2">
         <div className="card bg-base-300 shadow-md p-4 gap-4">
           <h2 className="text-3xl font-bold text-base-content">
             Dai il tuo feedback
