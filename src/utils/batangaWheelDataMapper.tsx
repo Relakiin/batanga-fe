@@ -23,7 +23,7 @@ export const mapDataToTableEntries = (data: BatangaTableData[]) => {
   return data
     .map((entry) => {
       return (
-        <tr>
+        <tr key={entry.data.id}>
           <td>{entry.player || '-'}</td>
           <td>{entry.type}</td>
           <td>{entry.data.name}</td>
@@ -52,8 +52,36 @@ export const mapDataToTableEntries = (data: BatangaTableData[]) => {
               </form>
             </dialog>
           </td>
-          <td>{`${entry.timestamp.getHours()}:${entry.timestamp.getMinutes()}.${entry.timestamp.getSeconds()}`}</td>
         </tr>
+      );
+    })
+    .reverse();
+};
+
+export const mapDataToCollapse = (data: BatangaTableData[]) => {
+  return data
+    .map((entry) => {
+      return (
+        <div key={entry.data.id}>
+          <details className="collapse collapse-arrow bg-base-300">
+            <summary className="collapse-title text-s font-medium">
+              {entry.player && 'Player ' + entry.player + '| '} {entry.type} |{' '}
+              {entry.data.name}
+            </summary>
+            <div className="collapse-content">
+              <p>{entry.data.description}</p>
+            </div>
+          </details>
+          <dialog id={`modal_${entry.data.id}`} className="modal">
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">{entry.data.name}</h3>
+              <p className="py-4">{entry.data.description}</p>
+            </div>
+            <form method="dialog" className="modal-backdrop">
+              <button>close</button>
+            </form>
+          </dialog>
+        </div>
       );
     })
     .reverse();

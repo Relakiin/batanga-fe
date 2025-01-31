@@ -1,7 +1,6 @@
 export interface BatangaTableData {
   player?: string;
   type: string;
-  timestamp: Date;
   data: BatangaWheelData;
 }
 

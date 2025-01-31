@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { modifiers, restrictions } from '../data/batangaWheelData.ts';
 import {
   BatangaTableData,
@@ -7,57 +7,48 @@ import {
 import { mapWheelOptions } from '../utils/batangaWheelDataMapper.tsx';
 import BatangaTable from '../components/BatangaTable.tsx';
 import BatangaWheel from '../components/BatangaWheel.tsx';
+import { useScreenDetector } from '../hooks/useScreenDetector.ts';
 
 function Play() {
+  const { isMobile } = useScreenDetector();
   const modifierWheelOptions = mapWheelOptions(modifiers);
   const restrictionWheelOptions = mapWheelOptions(restrictions);
-
-/*   const [selectedModifier, setSelectedModifier] =
-    useState<BatangaWheelData | null>(null);
-  const [selectedRestriction, setSelectedRestriction] =
-    useState<BatangaWheelData | null>(null); */
   const [tableContent, setTableContent] = useState<BatangaTableData[]>([]);
+  const [latestEntry, setLatestEntry] = useState<BatangaWheelData | null>(null);
 
-  const handleModifierSelected = (result: string) => {
-    const winner: BatangaWheelData = modifiers.find(
-      (modifier) => modifier.name === result
-    )!;
-    //setSelectedModifier(winner);
-    setTableContent((prev) => [
-      ...prev,
-      {
-        type: 'Modificatore',
-        data: winner,
-        timestamp: new Date(Date.now()),
-      },
-    ]);
+  const handleSelection = (
+    result: string,
+    type: 'Modificatore' | 'Restrizione',
+    dataList: BatangaWheelData[]
+  ) => {
+    const selectedItem = dataList.find((item) => item.name === result);
+    if (!selectedItem) return;
+
+    setTableContent((prev) => [...prev, { type, data: selectedItem }]);
+    setLatestEntry(selectedItem);
   };
-  const handleRestrictionSelected = (result: string) => {
-    const winner: BatangaWheelData = restrictions.find(
-      (restriction) => restriction.name === result
-    )!;
-    //setSelectedRestriction(winner);
-    setTableContent((prev) => [
-      ...prev,
-      {
-        type: 'Restrizione',
-        data: winner,
-        timestamp: new Date(Date.now()),
-      },
-    ]);
-  };
+
+  useEffect(() => {
+    if (isMobile && latestEntry) {
+      const modal = document.getElementById(
+        `modal_${latestEntry.id}`
+      ) as HTMLFormElement;
+      if (modal) modal.showModal();
+      setLatestEntry(null);
+    }
+  }, [tableContent, isMobile, latestEntry]);
 
   return (
-    <div
-      className="text-base-content min-h-screen w-full bg-cover bg-radial from-orange-800 to-orange-700 p-4"
-    >
+    <div className="text-base-content min-h-screen w-full bg-cover bg-radial from-orange-500 to-orange-300 p-4">
       <div className="grid md:grid-cols-1 lg:flex gap-4 items-start">
         {/* Modificatori */}
         <div className="card col-span-1 lg:flex-1 bg-base-200 shadow-md p-4">
           <h2 className="text-xl font-bold mb-4 text-center">Modificatori</h2>
           <BatangaWheel
             items={modifierWheelOptions}
-            onResult={handleModifierSelected}
+            onResult={(result) =>
+              handleSelection(result, 'Modificatore', modifiers)
+            }
           />
         </div>
 
@@ -67,13 +58,15 @@ function Play() {
           {
             <BatangaWheel
               items={restrictionWheelOptions}
-              onResult={handleRestrictionSelected}
+              onResult={(result) =>
+                handleSelection(result, 'Restrizione', restrictions)
+              }
             />
           }
         </div>
 
         {/* Tabella con info */}
-        <div className="col-span-1 lg:flex-2 ">
+        <div className="col-span-1 lg:flex-2">
           <BatangaTable data={tableContent} />
         </div>
       </div>

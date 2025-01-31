@@ -77,7 +77,6 @@ const BatangaWheel = ({ items, onResult }: BatangaWheelProps) => {
     ? deepmerge(defaultOptions, mobileSize)
     : deepmerge(defaultOptions, desktopSize);
 
-  console.log(options);
   const { roulette, onStart, onStop } = useRoulette({
     items,
     onSpinEnd: onResult,
