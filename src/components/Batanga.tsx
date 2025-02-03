@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import batanga from "../img/batanga.png";
+import batanga from "../img/batanga.webp";
 
 const Batanga = () => {
   const [clicks, setClicks] = useState(0);

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import barBackground from '../img/bg-bar.jpeg';
+import barBackground from '../img/bg-bar.webp';
 import { LuSwords } from 'react-icons/lu';
 import { BiSolidDrink } from 'react-icons/bi';
 import Batanga from '../components/Batanga';
